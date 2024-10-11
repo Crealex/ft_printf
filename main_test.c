@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 16:18:35 by atomasi           #+#    #+#             */
-/*   Updated: 2024/10/11 16:38:45 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/10/12 00:18:54 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 int main()
 {
-	ft_printf("Maison : Je test ma fonctoin %d\n", 15);
-	printf("Officiel : Je test ma fonctoin %d\n", 15);
+	char c = 'J';
+	char *str = "e teste";
+	printf("Officiel : Je test ma fonction %d %c %s\n", 15, c, str);
+	ft_printf("Maison : Je test ma fonction %d %c %s\n", 15, c, str);
 }

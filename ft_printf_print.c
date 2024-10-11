@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_print.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 09:48:25 by atomasi           #+#    #+#             */
-/*   Updated: 2024/10/11 16:42:20 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/10/12 00:17:33 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int short_print (char c, va_list args)
 	if (c == 'd' || c == 'i')
 		count = print_di(va_arg(args, int));
 	else if (c == 'c')
-		count = print_c(va_arg(args, char));
+		count = print_c(va_arg(args, int));
 	else if (c == 's')
 		count = print_s(va_arg(args, char *));
 	else if (c == 'p')
@@ -51,6 +51,7 @@ int	ft_printf(const char *str, ...)
 		{
 			i++;
 			count += short_print(str[i], args);
+			i++;
 		}
 		else
 		{
