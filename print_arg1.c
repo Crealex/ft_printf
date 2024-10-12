@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_arg1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 11:42:09 by atomasi           #+#    #+#             */
-/*   Updated: 2024/10/11 16:33:00 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/10/12 22:05:01 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int print_c(char c)
+int print_c(int c)
 {
 	write(1, &c, 1);
 	return (1);

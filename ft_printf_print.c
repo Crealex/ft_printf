@@ -6,7 +6,7 @@
 /*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 09:48:25 by atomasi           #+#    #+#             */
-/*   Updated: 2024/10/12 00:17:33 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/10/12 22:39:38 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int short_print (char c, va_list args)
 	return (count);
 }
 
+
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
@@ -50,16 +51,19 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
+			if (str[i] == '\0')
+				break;
 			count += short_print(str[i], args);
-			i++;
 		}
 		else
 		{
-			write(1, &str[i], 1);
-			i++;
+			if (str[i])
+				write(1, &str[i], 1);
 		}
-		va_end(args);
+		if (str[i])
+			i++;
 	}
-	return (i + count);
+	va_end(args);
+	return (count);
 }
 

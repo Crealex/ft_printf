@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 09:49:28 by atomasi           #+#    #+#             */
-/*   Updated: 2024/10/11 14:02:12 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/10/12 22:04:55 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 
 int	ft_printf(const char *str, ...);
-int	print_c(char c);
+int	print_c(int c);
 int	print_s(char *str);
 int	print_p(void *p);
 int	print_di(int n);
