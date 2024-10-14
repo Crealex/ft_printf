@@ -3,49 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   print_arg1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 11:42:09 by atomasi           #+#    #+#             */
-/*   Updated: 2024/10/12 22:05:01 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/10/14 16:43:13 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int print_c(int c)
+int	print_c(int c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
-
-int print_s(char *str)
+#include <stdio.h>
+int	print_s(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i])
+	if (str == NULL)
 	{
-		write(1, &str[i], 1);
+		return (write(1, "(null)", 6));
+	}
+	while (str[i])
+	{
+		if (print_c(str[i]) == -1)
+			return (-1);
 		i++;
 	}
 	return (i);
 }
 
-int print_p(void *p)
+int	print_p(unsigned long p)
 {
-	char	*str;
-	int				count;
+	int	count;
 
-	str = (char *)p;
 	count = 2;
-	write(1, "0x", 2);
-	count += print_s(str);
+	if (write(1, "0x", 2) == - 1)
+		return (-1);
+	count += print_x(p);
 	return (count);
 }
 
 int	print_di(int n)
 {
 	int	count;
+	int var;
 
 	count = 0;
 	if (n == -2147483648)
@@ -64,14 +68,17 @@ int	print_di(int n)
 		{
 			count += print_di(n / 10);
 		}
-		count += print_c((n % 10) + '0');
+		var = print_c((n % 10) + '0');
+		if (var == -1)
+			return (-1);
+		count += var;
 	}
 	return (count);
 }
 
 int	print_u(unsigned int n)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (n > 9)

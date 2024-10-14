@@ -1,6 +1,5 @@
 SRCS	=	ft_printf_print.c print_arg1.c print_arg2.c
 TEST	=	main_test.c
-HEADS	=	ft_printf.h
 OBJS	=	${SRCS:%.c=${OBJDIR}/%.o}
 OBJDIR	=	objet
 CC	=	gcc
@@ -18,6 +17,10 @@ ${OBJDIR}/%.o: %.c | ${OBJDIR}
 
 ${OBJDIR}:
 	mkdir -p ${OBJDIR}
+
+test : ${SRCS} ${TEST}
+	${CC} ${CFLAGS} ${SRCS} ${TEST}
+	./a.out
 
 clean:
 	rm -rf ${OBJDIR}
