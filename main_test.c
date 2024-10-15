@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+/* #include "ft_printf.h"
 #include <stdio.h>
 
 int main()
@@ -20,4 +20,8 @@ int main()
 	unsigned int hexa = 3219692086;
 	printf("Officiel : Je test ma fonction %c %s %d %X\n", c, str, 12, hexa);
 	ft_printf("Maison : Je test ma fonction %c %s %d %X\n", c, str, 12, hexa);
-}
+
+	// AUTRES TESTS
+	printf("officiel : %p %p\n", 0, 0);
+	ft_printf("Maison : %p %p\n", 0, 0);
+} */

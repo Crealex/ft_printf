@@ -16,7 +16,7 @@ int	print_c(int c)
 {
 	return (write(1, &c, 1));
 }
-#include <stdio.h>
+
 int	print_s(char *str)
 {
 	int	i;
@@ -40,7 +40,7 @@ int	print_p(unsigned long p)
 	int	count;
 
 	count = 2;
-	if (write(1, "0x", 2) == - 1)
+	if (p == 0 || write (1, "0x", 2) == - 1)
 		return (-1);
 	count += print_x(p);
 	return (count);
@@ -49,7 +49,7 @@ int	print_p(unsigned long p)
 int	print_di(int n)
 {
 	int	count;
-	int var;
+	int	var;
 
 	count = 0;
 	if (n == -2147483648)
