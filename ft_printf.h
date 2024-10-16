@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 09:49:28 by atomasi           #+#    #+#             */
-/*   Updated: 2024/10/14 10:56:11 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/10/16 13:02:56 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	print_s(char *str);
 int	print_p(unsigned long p);
 int	print_di(int n);
 int	print_u(unsigned int n);
-int	print_x(unsigned long n);
+int	print_x(unsigned int n);
 int	print_xmaj(unsigned int n);
 
 #endif

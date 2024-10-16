@@ -6,7 +6,7 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 11:42:09 by atomasi           #+#    #+#             */
-/*   Updated: 2024/10/14 16:43:13 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/10/16 13:02:24 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,6 @@ int	print_s(char *str)
 	return (i);
 }
 
-int	print_p(unsigned long p)
-{
-	int	count;
-
-	count = 2;
-	if (p == 0 || write (1, "0x", 2) == - 1)
-		return (-1);
-	count += print_x(p);
-	return (count);
-}
-
 int	print_di(int n)
 {
 	int	count;
@@ -53,37 +42,39 @@ int	print_di(int n)
 
 	count = 0;
 	if (n == -2147483648)
+		return (print_s("-2147483648"));
+	if (n < 0)
 	{
-		count = print_s("-2147483648");
+		if (write(1, "-", 1) == -1)
+			return (-1);
+		n = n * -1;
+		count += 1;
 	}
-	else
+	if (n > 9)
 	{
-		if (n < 0)
-		{
-			write(1, "-", 1);
-			n = n * -1;
-			count += 1;
-		}
-		if (n > 9)
-		{
-			count += print_di(n / 10);
-		}
-		var = print_c((n % 10) + '0');
+		var = print_di(n / 10);
 		if (var == -1)
 			return (-1);
 		count += var;
 	}
-	return (count);
+	var = print_c((n % 10) + '0');
+	if (var == -1)
+		return (-1);
+	return (count + var);
 }
 
 int	print_u(unsigned int n)
 {
 	int	count;
+	int	var;
 
 	count = 0;
 	if (n > 9)
 	{
-		count += print_u(n / 10);
+		var = print_u(n / 10);
+		if (var == -1)
+			return (-1);
+		count += var;
 	}
 	count += print_c((n % 10) + '0');
 	return (count);

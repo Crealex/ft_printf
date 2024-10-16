@@ -18,9 +18,9 @@ ${OBJDIR}/%.o: %.c | ${OBJDIR}
 ${OBJDIR}:
 	mkdir -p ${OBJDIR}
 
-test : ${SRCS} ${TEST}
-	${CC} ${CFLAGS} ${SRCS} ${TEST}
-	./a.out
+#test : ${SRCS} ${TEST}
+#	${CC} ${CFLAGS} ${SRCS} ${TEST}
+#	./a.out
 
 clean:
 	rm -rf ${OBJDIR}

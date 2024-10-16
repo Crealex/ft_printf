@@ -6,13 +6,13 @@
 /*   By: atomasi <atomasi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 09:48:25 by atomasi           #+#    #+#             */
-/*   Updated: 2024/10/14 15:57:44 by atomasi          ###   ########.fr       */
+/*   Updated: 2024/10/16 13:06:17 by atomasi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	short_print(char c, va_list args)
+static int	short_print(char c, va_list args)
 {
 	int	count;
 
@@ -36,6 +36,34 @@ int	short_print(char c, va_list args)
 	return (count);
 }
 
+static int	pre_short(int *i, const char *str, va_list args)
+{
+	int	var;
+	int	count;
+
+	count = 0;
+	if (str[*i] == '%')
+	{
+		(*i)++;
+		if (str[*i])
+		{
+			var = short_print(str[*i], args);
+			if (var == -1)
+				return (-1);
+			count += var;
+		}
+		else
+			return (-1);
+	}
+	else
+	{
+		if (write(1, &str[*i], 1) == -1)
+			return (-1);
+		count++;
+	}
+	return (count);
+}
+
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
@@ -46,26 +74,17 @@ int	ft_printf(const char *str, ...)
 	i = 0;
 	count = 0;
 	va_start(args, str);
-	if (str == NULL || !str)
+	if (!str)
 		return (-1);
 	while (str[i])
 	{
-		if (str[i] == '%')
+		var = pre_short(&i, str, args);
+		if (var == -1)
 		{
-			if (str[++i])
-			{
-				var = short_print(str[i], args);
-				if (var == -1)
-					return (-1);
-				count += var;
-			}
+			va_end(args);
+			return (-1);
 		}
-		else
-		{
-			if (write(1, &str[i], 1) == -1)
-				return (-1);
-			count++;
-		}
+		count += var;
 		i++;
 	}
 	va_end(args);
